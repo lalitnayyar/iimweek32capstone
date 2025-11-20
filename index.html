@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ChurnGuard AI - Strategic Business Plan Interactive Presentation">
-    <title>ChurnGuard AI - Interactive Presentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>ChurnGuard AI - Strategic Business Plan</title>
     <style>
         * {
             margin: 0;
@@ -13,652 +11,1332 @@
             box-sizing: border-box;
             -webkit-user-select: none;
             -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
         }
-
-        html, body {
-            width: 100%;
-            height: 100%;
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
             overflow: hidden;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #1a1a1a;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-
-        @media print {
-            body { display: none !important; }
-        }
-
-        .presentation-container {
+        
+        .container {
             display: flex;
             height: 100vh;
             width: 100vw;
-            gap: 0;
         }
-
+        
         .sidebar {
-            width: 180px;
+            width: 150px;
             background: #2a2a2a;
             border-right: 1px solid #444;
             overflow-y: auto;
             padding: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
         }
-
+        
         .sidebar-title {
             color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
         }
-
+        
         .thumbnail {
-            width: 100%;
-            aspect-ratio: 16/9;
+            width: 130px;
+            height: 100px;
             background: #333;
-            border: 2px solid #444;
+            border: 2px solid #555;
+            margin-bottom: 8px;
             cursor: pointer;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.2s ease;
-            position: relative;
-            font-size: 9px;
-            color: #999;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #999;
+            font-size: 11px;
+            transition: all 0.2s;
+            border-radius: 4px;
         }
-
+        
         .thumbnail:hover {
-            border-color: #FF6B35;
+            border-color: #0066CC;
             background: #3a3a3a;
         }
-
+        
         .thumbnail.active {
-            border-color: #0066CC;
-            background: #0066CC;
+            border-color: #FF6B35;
+            background: #444;
             color: #fff;
-            box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
         }
-
-        .main-area {
+        
+        .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             background: #000;
         }
-
-        .control-bar {
+        
+        .toolbar {
             background: #1a1a1a;
             border-bottom: 1px solid #444;
-            padding: 12px 16px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
-
-        .control-group {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .control-btn {
+        
+        button {
             background: #0066CC;
             color: white;
             border: none;
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
         }
-
-        .control-btn:hover {
-            background: #004A99;
+        
+        button:hover {
+            background: #0052A3;
         }
-
-        .control-btn.secondary {
+        
+        button.secondary {
             background: #FF6B35;
         }
-
-        .control-btn.secondary:hover {
+        
+        button.secondary:hover {
             background: #E55A24;
         }
-
+        
         .slide-counter {
             color: #fff;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            margin: 0 10px;
             min-width: 60px;
-            text-align: center;
         }
-
+        
         .progress-bar {
             flex: 1;
             height: 4px;
             background: #333;
             border-radius: 2px;
             overflow: hidden;
-            max-width: 300px;
+            margin: 0 10px;
+            min-width: 100px;
         }
-
+        
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #0066CC, #FF6B35);
-            width: 0%;
-            transition: width 0.3s ease;
+            background: #0066CC;
+            transition: width 0.3s;
         }
-
-        .slide-viewer {
+        
+        .slide-input {
+            width: 50px;
+            padding: 6px;
+            border: 1px solid #555;
+            background: #333;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        
+        .slide-content {
             flex: 1;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            overflow: hidden;
-            background: #000;
-            position: relative;
         }
-
+        
         .slide-wrapper {
             width: 100%;
             height: 100%;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
-
-        .slide-content {
-            width: 1280px;
-            height: 720px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-            position: relative;
-            animation: slideIn 0.4s ease-out;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 102, 204, 0.8);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 24px;
+        
+        .slide-wrapper.active {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            z-index: 10;
         }
-
-        .nav-arrow:hover {
-            background: rgba(0, 102, 204, 1);
-        }
-
-        .nav-arrow.prev {
-            left: 20px;
-        }
-
-        .nav-arrow.next {
-            right: 20px;
-        }
-
-        .keyboard-help {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.95);
-            color: #fff;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 11px;
-            max-width: 180px;
-            border: 1px solid #444;
-            z-index: 100;
-            display: none;
-        }
-
-        .keyboard-help.show {
-            display: block;
-        }
-
-        .keyboard-help-title {
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #FF6B35;
-        }
-
-        .keyboard-help-item {
-            margin-bottom: 3px;
-            line-height: 1.3;
-        }
-
-        .keyboard-help-key {
-            background: #333;
-            padding: 2px 4px;
-            border-radius: 2px;
-            font-family: monospace;
-            font-size: 10px;
-            display: inline-block;
-            min-width: 18px;
-            text-align: center;
-        }
-
-        .presentation-container.fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999;
-        }
-
-        .presentation-container.fullscreen .sidebar {
-            display: none;
-        }
-
-        .presentation-container.fullscreen .control-bar {
-            display: none;
-        }
-
-        .presentation-container.fullscreen .keyboard-help {
-            display: none;
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 120px;
-            }
-
-            .slide-content {
-                width: 85vw;
-                height: calc(85vw * 9 / 16);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
-
-            .slide-content {
-                width: 95vw;
-                height: calc(95vw * 9 / 16);
-            }
-
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-        }
-
-        /* Slide styles */
+        
         .slide-container {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            overflow: auto;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-
-        .slide-container * {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        
+        .slide-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        h1, h2, h3 {
+            color: #0066CC;
+            margin: 15px 0;
+        }
+        
+        h1 { font-size: 42px; }
+        h2 { font-size: 32px; }
+        h3 { font-size: 24px; color: #FF6B35; }
+        
+        p, li {
+            color: #333;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        table th {
+            background: #0066CC;
+            color: white;
+        }
+        
+        .help-panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            z-index: 1000;
+            max-width: 500px;
+        }
+        
+        .help-panel.active {
+            display: block;
+        }
+        
+        .help-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+        
+        .help-overlay.active {
+            display: block;
+        }
+        
+        .help-close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+            color: #999;
+        }
+        
+        .help-close:hover {
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="presentation-container" id="presentationContainer">
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-title">Slides</div>
-            <div id="thumbnailContainer"></div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-title">SLIDES</div>
+            <div id="thumbnails"></div>
         </div>
-
-        <div class="main-area">
-            <div class="control-bar">
-                <div class="control-group">
-                    <button class="control-btn" onclick="previousSlide()">← Previous</button>
-                    <button class="control-btn" onclick="nextSlide()">Next →</button>
-                </div>
-
-                <div class="control-group">
-                    <input type="number" id="slideJump" min="1" max="33" value="1" style="width: 50px; padding: 6px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: #fff; font-size: 12px;" onkeypress="if(event.key==='Enter') goToSlide(parseInt(this.value)-1)">
-                    <div class="slide-counter"><span id="currentSlide">1</span> / 33</div>
-                </div>
-
-                <div class="control-group">
-                    <button class="control-btn secondary" onclick="toggleFullscreen()">🖥️ Fullscreen</button>
-                    <button class="control-btn" onclick="zoomIn()">🔍+</button>
-                    <button class="control-btn" onclick="zoomOut()">🔍−</button>
-                </div>
-
+        
+        <div class="main-content">
+            <div class="toolbar">
+                <button onclick="previousSlide()">← Previous</button>
+                <button onclick="nextSlide()">Next →</button>
+                <input type="number" id="jumpInput" class="slide-input" min="1" max="33" placeholder="Go to" onkeypress="if(event.key==='Enter') jumpToSlide()">
+                <div class="slide-counter"><span id="current">1</span> / 33</div>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-fill" id="progress" style="width: 3.03%"></div>
                 </div>
+                <button class="secondary" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+                <button onclick="zoomIn()">+</button>
+                <button onclick="zoomOut()">-</button>
+                <button onclick="showHelp()">?</button>
             </div>
-
-            <div class="slide-viewer">
-                <button class="nav-arrow prev" onclick="previousSlide()">‹</button>
-                <div class="slide-wrapper" id="slideWrapper">
-                    <div class="slide-content" id="slideContent"></div>
-                </div>
-                <button class="nav-arrow next" onclick="nextSlide()">›</button>
-            </div>
+            
+            <div class="slide-content" id="slideContent"></div>
         </div>
     </div>
-
-    <div class="keyboard-help" id="keyboardHelp">
-        <div class="keyboard-help-title">⌨️ Shortcuts</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">→</span> Next</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">←</span> Previous</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">Home</span> First</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">End</span> Last</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">F</span> Fullscreen</div>
-        <div class="keyboard-help-item"><span class="keyboard-help-key">?</span> Help</div>
+    
+    <div class="help-overlay" id="helpOverlay" onclick="hideHelp()"></div>
+    <div class="help-panel" id="helpPanel">
+        <span class="help-close" onclick="hideHelp()">&times;</span>
+        <h2>Keyboard Shortcuts</h2>
+        <p><strong>→</strong> or <strong>Space</strong> - Next slide</p>
+        <p><strong>←</strong> - Previous slide</p>
+        <p><strong>Home</strong> - First slide</p>
+        <p><strong>End</strong> - Last slide</p>
+        <p><strong>F</strong> - Fullscreen</p>
+        <p><strong>+/-</strong> - Zoom</p>
+        <p><strong>?</strong> - Show this help</p>
     </div>
-
+    
     <script>
-        // All slides data embedded directly
-        const slidesData = [];
-        let currentSlideIndex = 0;
-        let zoomLevel = 1;
-
-        // Initialize slides from embedded content
-        function initializeSlides() {
-            // Create slide objects with content from the slide files
-            // This will be populated by loading slide content
-            loadAllSlides();
-        }
-
-        // Load all slides from files
-        async function loadAllSlides() {
-            const slideFiles = [
-                'churnguard_presentation/slide_01_title.html',
-                'churnguard_presentation/slide_01b_rubric_coverage.html',
-                'churnguard_presentation/slide_02_executive_summary.html',
-                'churnguard_presentation/slide_03_problem.html',
-                'churnguard_presentation/slide_04_solution.html',
-                'churnguard_presentation/slide_05_market_size.html',
-                'churnguard_presentation/slide_06_target_industries.html',
-                'churnguard_presentation/slide_07_competitive_landscape.html',
-                'churnguard_presentation/slide_08_use_case_telecom.html',
-                'churnguard_presentation/slide_09_use_case_ecommerce.html',
-                'churnguard_presentation/slide_10_use_case_saas.html',
-                'churnguard_presentation/slide_11_impact_benefits.html',
-                'churnguard_presentation/slide_12_impact_challenges.html',
-                'churnguard_presentation/slide_13_impact_ethics.html',
-                'churnguard_presentation/slide_14_monetization_pricing.html',
-                'churnguard_presentation/slide_15_monetization_revenue.html',
-                'churnguard_presentation/slide_16_monetization_gtm.html',
-                'churnguard_presentation/slide_17_monetization_breakeven.html',
-                'churnguard_presentation/slide_18_financial_funding.html',
-                'churnguard_presentation/slide_19_financial_sources.html',
-                'churnguard_presentation/slide_20_financial_projections.html',
-                'churnguard_presentation/slide_21_financial_drivers.html',
-                'churnguard_presentation/slide_22_financial_costs.html',
-                'churnguard_presentation/slide_23_financial_cashflow.html',
-                'churnguard_presentation/slide_24_financial_balance.html',
-                'churnguard_presentation/slide_25_metrics_customer.html',
-                'churnguard_presentation/slide_26_metrics_financial.html',
-                'churnguard_presentation/slide_27_metrics_operational.html',
-                'churnguard_presentation/slide_28_roadmap_phase1.html',
-                'churnguard_presentation/slide_29_roadmap_phase2.html',
-                'churnguard_presentation/slide_30_roadmap_phase3.html',
-                'churnguard_presentation/slide_31_roadmap_phase4.html',
-                'churnguard_presentation/slide_32_conclusion.html'
-            ];
-
-            let loadedCount = 0;
-
-            for (let i = 0; i < slideFiles.length; i++) {
-                try {
-                    const response = await fetch(slideFiles[i]);
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    const html = await response.text();
-                    const match = html.match(/<div class="slide-container">([\s\S]*?)<\/div>\s*<\/body>/);
-                    
-                    if (match) {
-                        slidesData[i] = {
-                            id: i,
-                            title: `Slide ${i + 1}`,
-                            content: match[1]
-                        };
-                        loadedCount++;
-                    }
-                } catch (e) {
-                    console.error(`Error loading slide ${i + 1}:`, e);
-                }
-            }
-
-            console.log(`Loaded ${loadedCount} slides`);
+        // Disable right-click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Disable copy/cut/paste
+        document.addEventListener('copy', e => e.preventDefault());
+        document.addEventListener('cut', e => e.preventDefault());
+        document.addEventListener('paste', e => e.preventDefault());
+        
+        // Disable drag
+        document.addEventListener('dragstart', e => e.preventDefault());
+        
+        // Disable print
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') e.preventDefault();
+        });
+        
+        let currentSlide = 0;
+        let zoomLevel = 100;
+        
+        const slidesHTML = [
+            `<!-- Decorative elements -->
+        <div class="geometric-bg circle-1"></div>
+        <div class="geometric-bg circle-2"></div>
+        <div class="accent-line line-1"></div>
+        <div class="accent-line line-2"></div>
+        
+        <!-- Main content -->
+        <div class="content">
+            <h1 class="main-title">ChurnGuard AI</h1>
+            <p class="subtitle">Strategic Business Plan</p>
+            <div class="divider"></div>
             
-            if (loadedCount > 0) {
-                initPresentation();
-            } else {
-                document.getElementById('slideContent').innerHTML = '<div style="color: red; padding: 20px;">Error: Could not load slides. Please ensure all slide files are in the churnguard_presentation folder.</div>';
-            }
-        }
-
-        // Initialize presentation
-        function initPresentation() {
-            createThumbnails();
-            showSlide(0);
-            setupKeyboardShortcuts();
-            setupCopyProtection();
-        }
-
-        // Create thumbnails
-        function createThumbnails() {
-            const container = document.getElementById('thumbnailContainer');
-            container.innerHTML = '';
+            <div class="student-info-box">
+                <div class="student-name">Lalit Nayyar</div>
+                <div class="student-email">lalitnayyar@gmail.com</div>
+                <div class="divider-small"></div>
+                <div class="course-info">
+                    <div><span class="course-label">Course:</span> IIMK's Professional Certificate in Data Science and Artificial Intelligence for Managers</div>
+                    <div style="margin-top: 12px;"><span class="course-label">Assignment:</span> Capstone Project - Section A, Week 32</div>
+                    <div style="margin-top: 12px;"><span class="course-label">Date:</span> November 2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 1 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        
+        <h1 class="slide-title">Rubric Coverage</h1>
+        <p class="slide-subtitle">Assignment Framework & Criteria Mapping</p>
+        
+        <div class="rubric-grid">
+            <div class="rubric-item">
+                <div class="rubric-number">Criterion 1</div>
+                <div>
+                    <div class="rubric-title">Market Analysis</div>
+                    <div class="rubric-details">Thorough analysis with reliable data, clear industry positioning, strong competition analysis, well-justified target market demographics</div>
+                </div>
+                <div class="slide-reference">Slides 3-7</div>
+            </div>
             
-            for (let i = 0; i < slidesData.length; i++) {
+            <div class="rubric-item">
+                <div class="rubric-number">Criterion 2</div>
+                <div>
+                    <div class="rubric-title">Use Case Development</div>
+                    <div class="rubric-details">Clearly defined use cases with step-by-step integration into business processes. Realistic and well-supported with quantified ROI</div>
+                </div>
+                <div class="slide-reference">Slides 8-10</div>
+            </div>
+            
+            <div class="rubric-item">
+                <div class="rubric-number">Criterion 3</div>
+                <div>
+                    <div class="rubric-title">Impact Assessment</div>
+                    <div class="rubric-details">Comprehensive testing plan, detailed change management strategy, thorough consideration of legal and ethical issues</div>
+                </div>
+                <div class="slide-reference">Slides 11-13</div>
+            </div>
+            
+            <div class="rubric-item">
+                <div class="rubric-number">Criterion 4</div>
+                <div>
+                    <div class="rubric-title">Monetization Strategy</div>
+                    <div class="rubric-details">Well-structured revenue model, clear projected sales, break-even calculation, investor recovery strategy</div>
+                </div>
+                <div class="slide-reference">Slides 14-17</div>
+            </div>
+            
+            <div class="rubric-item">
+                <div class="rubric-number">Criterion 5</div>
+                <div>
+                    <div class="rubric-title">Financial Plan</div>
+                    <div class="rubric-details">Detailed funding sources, accurate three-year projections for cash flow and balance sheet, realistic financial feasibility</div>
+                </div>
+                <div class="slide-reference">Slides 18-24</div>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <strong>Additional Coverage:</strong> Success Metrics (Slides 25-27) | Implementation Roadmap (Slides 28-31) | Conclusion (Slide 32)
+        </div>
+        
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 2 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Executive Summary</h1>
+            <p class="slide-subtitle">Market Opportunity</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">$7.08B</div>
+                    <div class="metric-label">Market Size by 2033</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">17.2%</div>
+                    <div class="metric-label">Annual CAGR</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">5-25x</div>
+                    <div class="metric-label">Retention vs Acquisition Cost</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">25-95%</div>
+                    <div class="metric-label">Profit Increase (5% Retention)</div>
+                </div>
+            </div>
+            <p class="body-text">ChurnGuard AI addresses a critical business challenge—customer retention—with a proven, AI-powered solution that delivers measurable ROI. The global churn prediction software market has reached USD 1.78 billion in 2024 and is projected to grow to USD 7.08 billion by 2033, representing a robust CAGR of 17.2%.</p>
+            <div class="key-points">
+                <div class="key-point">Market opportunity driven by fundamental economics: acquiring new customers costs 5-25 times more than retaining existing ones</div>
+                <div class="key-point">Just a 5% improvement in retention rates can increase profits by 25-95%, creating massive ROI potential</div>
+                <div class="key-point">ChurnGuard AI enables proactive retention strategies through advanced ML prediction with 85%+ accuracy</div>
+                <div class="key-point">Multiple high-churn industries represent $4+ billion addressable market opportunity</div>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/market_growth.png" alt="Market Growth Visualization">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 3 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">The Problem</h1>
+            <p class="slide-subtitle">Rising Costs & High Churn</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">60-75%</div>
+                    <div class="metric-label">CAC Increase (2014-2019)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">$606</div>
+                    <div class="metric-label">Average CAC</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">25.4%</div>
+                    <div class="metric-label">Retail Churn Rate</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">21.5%</div>
+                    <div class="metric-label">Telecom Churn Rate</div>
+                </div>
+                
+            </div>
+            <p class="body-text">Businesses across all sectors are facing a profitability crisis driven by escalating customer acquisition costs. Between 2014 and 2019, CAC increased by 60-75%, with e-commerce experiencing a 60% surge in just five years. Meanwhile, churn rates remain alarmingly high across industries.</p>
+            <div class="key-points">
+                <div class="key-point">CAC increased 60-75% from 2014-2019</div>
+                <div class="key-point">Average CAC: $606 across industries</div>
+                <div class="key-point">Retail churn: 25.4% annually</div>
+                <div class="key-point">Telecom churn: 21.5% annually</div>
+                <div class="key-point">SaaS churn: 13.2% annually</div>
+                <div class="key-point">Unsustainable business model threatens profitability</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/problem_costs.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 4 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">The Solution</h1>
+            <p class="slide-subtitle">ChurnGuard AI Platform</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">85%+</div>
+                    <div class="metric-label">Prediction Accuracy</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">Real-time</div>
+                    <div class="metric-label">Churn Scoring</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">Automated</div>
+                    <div class="metric-label">Interventions</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">Seamless</div>
+                    <div class="metric-label">Integration</div>
+                </div>
+                
+            </div>
+            <p class="body-text">ChurnGuard AI is a cloud-based SaaS platform that leverages state-of-the-art machine learning algorithms to predict customer churn before it occurs. By analyzing behavioral patterns, transaction histories, engagement metrics, and customer service interactions, our platform identifies at-risk customers with over 85% accuracy.</p>
+            <div class="key-points">
+                <div class="key-point">Real-time churn prediction with 85%+ accuracy</div>
+                <div class="key-point">Behavioral pattern analysis and risk scoring</div>
+                <div class="key-point">Automated intervention recommendations</div>
+                <div class="key-point">Seamless CRM/marketing tool integration</div>
+                <div class="key-point">Customizable dashboards and alerts</div>
+                <div class="key-point">Enterprise-grade scalability and reliability</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/ai_platform.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 5 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Market Analysis</h1>
+            <p class="slide-subtitle">Global Market Size</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">$1.78B</div>
+                    <div class="metric-label">2024 Market Size</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">$7.08B</div>
+                    <div class="metric-label">2033 Market Size</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">17.2%</div>
+                    <div class="metric-label">CAGR</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">4x</div>
+                    <div class="metric-label">Growth Multiple</div>
+                </div>
+                
+            </div>
+            <p class="body-text">The churn prediction software market is experiencing unprecedented growth across all global regions. North America currently dominates with the largest market share, while Asia Pacific is the fastest-growing region. The broader customer retention software market is even larger, projected to reach $15 billion by 2025.</p>
+            <div class="key-points">
+                <div class="key-point">Churn Prediction Software: $1.78B → $7.08B (2024-2033)</div>
+                <div class="key-point">AI Churn Prediction: $2.5B → $7.91B (2025-2033, CAGR 19.7%)</div>
+                <div class="key-point">Customer Retention Software: $15B by 2025</div>
+                <div class="key-point">Customer Success Platforms: $1.52B → $5.89B (2023-2030)</div>
+                <div class="key-point">North America leads, Asia Pacific fastest-growing</div>
+                <div class="key-point">Digital transformation driving adoption</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_market_growth.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 6 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Market Analysis</h1>
+            <p class="slide-subtitle">Target Industries</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">25.4%</div>
+                    <div class="metric-label">Retail Churn</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">21.5%</div>
+                    <div class="metric-label">Telecom Churn</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">15.3%</div>
+                    <div class="metric-label">BFSI Churn</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">13.2%</div>
+                    <div class="metric-label">SaaS Churn</div>
+                </div>
+                
+            </div>
+            <p class="body-text">Our primary target industries are characterized by high churn rates, subscription-based revenue models, and significant customer lifetime values. These four sectors represent an immediate $4+ billion addressable market opportunity with clear pain points that ChurnGuard AI solves.</p>
+            <div class="key-points">
+                <div class="key-point">Telecommunications: 21.5% churn, massive customer bases</div>
+                <div class="key-point">Retail & E-commerce: 25.4% churn, intense competition</div>
+                <div class="key-point">BFSI: 15.3% churn, high-value customers</div>
+                <div class="key-point">SaaS: 13.2% churn, subscription-sensitive</div>
+                <div class="key-point">Combined addressable market: $4+ billion</div>
+                <div class="key-point">Each industry has unique retention challenges</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_churn_rates.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 7 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Market Analysis</h1>
+            <p class="slide-subtitle">Competitive Landscape</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">Enterprise</div>
+                    <div class="metric-label">Tier</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">AI-First</div>
+                    <div class="metric-label">Tier</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">Mid-Market</div>
+                    <div class="metric-label">Gap</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">ChurnGuard</div>
+                    <div class="metric-label">Opportunity</div>
+                </div>
+                
+            </div>
+            <p class="body-text">The churn prediction market consists of three distinct competitive tiers. Enterprise platforms like Gainsight and Salesforce dominate the high-end market but lack specialized AI capabilities. AI-powered challengers focus on predictive analytics but may lack enterprise features. The mid-market remains underserved, creating an opportunity for solutions combining AI sophistication with enterprise reliability.</p>
+            <div class="key-points">
+                <div class="key-point">Enterprise Tier: Gainsight, Salesforce, Zendesk (strong brand, weak AI)</div>
+                <div class="key-point">AI-First Tier: Pecan AI, Braze, ChurnZero (strong AI, weak enterprise)</div>
+                <div class="key-point">Mid-Market Gap: Underserved segment with clear opportunity</div>
+                <div class="key-point">ChurnGuard AI: Superior accuracy + enterprise-grade reliability</div>
+                <div class="key-point">Competitive advantages: Seamless integration, actionable insights</div>
+                <div class="key-point">Positioned for rapid market penetration</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/competitive_landscape.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 8 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Use Case 1</h1>
+            <p class="slide-subtitle">Proactive Retention in Telecommunications</p>
+            <p class="body-text">A major telecommunications provider implemented ChurnGuard AI to address their 21.5% annual churn rate. The platform analyzes subscriber behavior including declining usage patterns, network quality issues, customer service interactions, and competitive pricing research. When the system identifies a high-risk subscriber, it automatically triggers a retention workflow.</p>
+            <div class="key-points">
+                <div class="key-point">Data Integration: Connect billing, network, and CRM systems</div>
+                <div class="key-point">Model Training: Analyze 24 months of historical churn data</div>
+                <div class="key-point">Risk Scoring: Real-time scoring of all active subscribers</div>
+                <div class="key-point">Automated Triggers: High-risk alerts to retention team</div>
+                <div class="key-point">Intervention: Personalized offers (discounts, upgrades, loyalty rewards)</div>
+                <div class="key-point">Results: 18% churn reduction, $12M annual savings, 3-month payback</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/telecom_use_case.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 2</div>
+            <div class="footer-right">Slide 9 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Use Case 2</h1>
+            <p class="slide-subtitle">Personalized Marketing in E-commerce</p>
+            <p class="body-text">An online retail platform with 25.4% annual churn deployed ChurnGuard AI to segment customers based on churn risk and lifetime value. The platform identifies four key segments: high-value/low-risk (VIP treatment), high-value/high-risk (intensive retention), low-value/low-risk (nurture campaigns), and low-value/high-risk (minimal investment).</p>
+            <div class="key-points">
+                <div class="key-point">Segmentation Strategy: Risk and LTV-based customer grouping</div>
+                <div class="key-point">Resource Allocation: Proportional investment by segment</div>
+                <div class="key-point">Personalization: Tailored offers and communication for each segment</div>
+                <div class="key-point">Marketing Optimization: 22% reduction in marketing spend</div>
+                <div class="key-point">Results: 34% increase in customer LTV, 156% ROI in first year</div>
+                <div class="key-point">Engagement: 28% improvement in email engagement</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/ecommerce_use_case.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 2</div>
+            <div class="footer-right">Slide 10 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Use Case 3</h1>
+            <p class="slide-subtitle">Product Development in SaaS</p>
+            <p class="body-text">A B2B SaaS company with 13.2% monthly churn used ChurnGuard AI to analyze the root causes of customer cancellations. The platform's advanced analytics revealed that 40% of churned customers had struggled with a specific reporting feature that lacked critical functionality. Armed with this insight, the product team prioritized a complete redesign.</p>
+            <div class="key-points">
+                <div class="key-point">Churn Attribution: Link cancellations to product usage patterns</div>
+                <div class="key-point">Feature Analysis: Identify underutilized or problematic features</div>
+                <div class="key-point">Feedback Correlation: Connect product issues to support tickets</div>
+                <div class="key-point">Impact Quantification: Calculate churn impact by feature</div>
+                <div class="key-point">Roadmap Prioritization: Rank development projects by churn reduction</div>
+                <div class="key-point">Results: 45% churn reduction, $2.3M saved in ARR, 38-point NPS increase</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/saas_use_case.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 2</div>
+            <div class="footer-right">Slide 11 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Impact Assessment</h1>
+            <p class="slide-subtitle">Quantifiable Benefits</p>
+            <p class="body-text">The financial impact of implementing ChurnGuard AI extends across multiple dimensions of business performance. Direct benefits include 15-20% reduction in churn rates within the first year, translating to millions in saved revenue for mid-sized companies. Increased customer lifetime value results from both retention improvements and more effective upselling.</p>
+            <div class="key-points">
+                <div class="key-point">Direct Revenue Impact: 15-20% churn reduction in Year 1</div>
+                <div class="key-point">Profit Multiplier: 25-95% profit increase from 5% retention improvement</div>
+                <div class="key-point">LTV Growth: 34% average increase in customer lifetime value</div>
+                <div class="key-point">Operational Efficiency: 60% reduction in manual churn analysis time</div>
+                <div class="key-point">Marketing Effectiveness: 40% improvement in retention campaign effectiveness</div>
+                <div class="key-point">ROI: 300-500% typical return on investment within 18 months</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/financial_growth.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 3</div>
+            <div class="footer-right">Slide 12 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Impact Assessment</h1>
+            <p class="slide-subtitle">Implementation Challenges</p>
+            <p class="body-text">While ChurnGuard AI delivers substantial benefits, successful implementation requires addressing several key challenges. Data quality and integration represent the most common obstacle, as predictive accuracy depends on comprehensive, clean customer data from multiple systems. Model interpretability challenges arise when business stakeholders need to understand and trust AI-driven recommendations.</p>
+            <div class="key-points">
+                <div class="key-point">Data Quality & Integration: Siloed data across CRM, billing, support systems</div>
+                <div class="key-point">Solution: Pre-built connectors, data quality assessment, ETL support</div>
+                <div class="key-point">Model Interpretability: Business users need to understand AI predictions</div>
+                <div class="key-point">Change Management: Shifting from reactive to proactive retention culture</div>
+                <div class="key-point">Technical Integration: Legacy systems and custom workflows</div>
+                <div class="key-point">Timeline: 2-4 weeks for typical integration, 3-6 months for full adoption</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/challenges.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 3</div>
+            <div class="footer-right">Slide 13 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Impact Assessment</h1>
+            <p class="slide-subtitle">Ethical Considerations</p>
+            <p class="body-text">As an AI-powered platform handling sensitive customer data, ChurnGuard AI maintains the highest ethical standards across three critical dimensions. Data privacy compliance includes full adherence to GDPR, CCPA, and industry-specific regulations, with all customer data encrypted, anonymized, and stored in secure, region-specific data centers.</p>
+            <div class="key-points">
+                <div class="key-point">Data Privacy: GDPR and CCPA compliant architecture</div>
+                <div class="key-point">Encryption: End-to-end encryption for data in transit and at rest</div>
+                <div class="key-point">Algorithmic Fairness: Bias detection and mitigation techniques</div>
+                <div class="key-point">Transparency: Feature importance visualization for each prediction</div>
+                <div class="key-point">Compliance: Annual third-party security audits</div>
+                <div class="key-point">Customer Rights: Data deletion upon request, audit trails for all actions</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/ethics_compliance.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 3</div>
+            <div class="footer-right">Slide 14 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Pricing Model</p>
+            <p class="body-text">ChurnGuard AI employs a value-based pricing strategy with three core tiers designed to serve businesses of all sizes. The Starter plan at $499/month targets SMEs with up to 10,000 customers, providing essential churn prediction capabilities and basic integrations. The Professional plan at $1,499/month serves mid-market companies with up to 50,000 customers, adding advanced analytics, API access, and multiple predictive models.</p>
+            <div class="key-points">
+                <div class="key-point">Tiered SaaS pricing captures value across SME, mid-market, and enterprise segments</div>
+                <div class="key-point">Starter Plan: $499/month for SMEs with up to 10,000 customers</div>
+                <div class="key-point">Professional Plan: $1,499/month for mid-market with up to 50,000 customers</div>
+                <div class="key-point">Enterprise Plan: Custom pricing based on volume and requirements</div>
+                <div class="key-point">Additional Revenue: API services ($0.01 per prediction), professional services</div>
+                <div class="key-point">Annual contracts with 15% discount encourage longer commitments</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_pricing_tiers.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 15 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Revenue Model</p>
+            <p class="body-text">Our SaaS business model delivers highly attractive unit economics with gross margins exceeding 85%, driven by low marginal costs for serving additional customers on our cloud-native platform. The subscription model provides predictable, recurring revenue with high visibility into future cash flows. We project an average revenue per account (ARPA) of $1,200/month across all tiers, with enterprise customers contributing 60% of total revenue.</p>
+            <div class="key-points">
+                <div class="key-point">SaaS business model with 85% gross margins and strong unit economics</div>
+                <div class="key-point">Average Revenue Per Account (ARPA): $1,200/month across all tiers</div>
+                <div class="key-point">Customer Acquisition Cost (CAC): $3,600 with 3-month payback period</div>
+                <div class="key-point">Customer Lifetime Value (LTV): $43,200 with 36-month average lifetime</div>
+                <div class="key-point">LTV:CAC Ratio: 12:1 demonstrating highly profitable unit economics</div>
+                <div class="key-point">Net Revenue Retention: 115% including expansion revenue from existing customers</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_unit_economics.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 16 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Sales & Go-to-Market</p>
+            <p class="body-text">We will pursue a diversified funding strategy combining angel investors, venture capital firms, and strategic investors with domain expertise in SaaS, AI, and customer success technologies. Our target investor profile includes individuals and firms who have successfully scaled B2B SaaS companies, understand the customer retention market, and can provide strategic guidance beyond capital.</p>
+            <div class="key-points">
+                <div class="key-point">Multi-channel sales strategy combines digital marketing, inside sales, and field sales</div>
+                <div class="key-point">SME Segment: Digital marketing and self-service with 15-20% trial conversion</div>
+                <div class="key-point">Mid-Market Segment: Inside sales team with 25-30% conversion from qualified leads</div>
+                <div class="key-point">Enterprise Segment: Field sales with strategic account management and RFP support</div>
+                <div class="key-point">Strategic Partnerships: CRM integrations, system integrators, consulting firms</div>
+                <div class="key-point">Marketing Focus: Content leadership, SEO, targeted account-based marketing</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/sales_strategy.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 17 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Break-Even Analysis</p>
+            <p class="body-text">Our financial model projects break-even within 30 months of operation, driven by the combination of strong unit economics, scalable technology infrastructure, and efficient customer acquisition. In Year 1, we focus on product-market fit and initial customer acquisition, targeting 25 customers generating $250,000 in ARR. Year 2 emphasizes scaling sales and marketing, reaching 100 customers and $1.2M in ARR.</p>
+            <div class="key-points">
+                <div class="key-point">Path to profitability within 30 months with strong cash flow generation thereafter</div>
+                <div class="key-point">Year 1: 25 customers, $250K ARR, -$350K EBITDA (product-market fit focus)</div>
+                <div class="key-point">Year 2: 100 customers, $1.2M ARR, -$150K EBITDA (scaling sales and marketing)</div>
+                <div class="key-point">Year 3: 250 customers, $3.5M ARR, +$450K EBITDA (profitability achieved)</div>
+                <div class="key-point">Break-Even Point: Month 30 with cumulative cash requirement of $850K</div>
+                <div class="key-point">Post-Break-Even: 100% YoY revenue growth with improving margins</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_breakeven.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 18 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Funding Requirements</p>
+            <p class="body-text">ChurnGuard AI is raising $500,000 in seed funding to support the first 18 months of operations, covering product development, go-to-market execution, and working capital. This funding will enable us to build a world-class engineering and data science team, develop our core platform, acquire initial customers, and validate product-market fit.</p>
+            <div class="key-points">
+                <div class="key-point">Seeking $500,000 in seed funding to achieve product-market fit and scale</div>
+                <div class="key-point">Product Development (50% - $250K): Engineering and data science team</div>
+                <div class="key-point">Sales & Marketing (30% - $150K): Digital marketing and inside sales team</div>
+                <div class="key-point">Infrastructure (10% - $50K): Cloud hosting, software licenses, security</div>
+                <div class="key-point">Operational Costs (10% - $50K): Office, legal, accounting, insurance</div>
+                <div class="key-point">Runway: 18 months sufficient to demonstrate traction and prepare Series A</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_funding_allocation.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 19 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Funding Sources</p>
+            <p class="body-text">We will pursue a diversified funding strategy combining angel investors, venture capital firms, and strategic investors with domain expertise in SaaS, AI, and customer success technologies. Our target investor profile includes individuals and firms who have successfully scaled B2B SaaS companies, understand the customer retention market, and can provide strategic guidance beyond capital.</p>
+            <div class="key-points">
+                <div class="key-point">Diversified funding strategy targeting angel investors and venture capital firms</div>
+                <div class="key-point">Angel Investors (30% - $150K): Former SaaS executives with domain expertise</div>
+                <div class="key-point">Venture Capital (60% - $300K): Early-stage SaaS-focused funds with follow-on commitment</div>
+                <div class="key-point">Strategic Investors (10% - $50K): CRM platforms and customer success vendors</div>
+                <div class="key-point">Investment Terms: Priced equity round, $2.5M pre-money valuation</div>
+                <div class="key-point">Investor Value-Add: Network introductions, go-to-market expertise, board support</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/funding_investment.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 20 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Three-Year Projections</p>
+            <p class="body-text">Our three-year financial projections demonstrate a clear path to scalable, profitable growth. Year 1 focuses on achieving product-market fit with 25 customers and $250,000 in ARR, while investing heavily in product development. Year 2 emphasizes scaling customer acquisition to 100 customers and $1.2M in ARR, with improving unit economics as we optimize marketing channels.</p>
+            <div class="key-points">
+                <div class="key-point">Year 1: $250K ARR with 25 customers, heavy product development investment</div>
+                <div class="key-point">Year 2: $1.2M ARR with 100 customers, 380% YoY growth, improving unit economics</div>
+                <div class="key-point">Year 3: $3.5M ARR with 250 customers, 192% YoY growth, positive EBITDA</div>
+                <div class="key-point">Gross Margin: Stable at 85% across all three years due to scalable platform</div>
+                <div class="key-point">LTV:CAC Ratio: Improves from 5:1 (Year 1) to 16:1 (Year 3)</div>
+                <div class="key-point">Conservative assumptions with significant upside from enterprise expansion</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_revenue_projections.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 21 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Revenue Drivers</p>
+            <p class="body-text">Our revenue projections are underpinned by specific, measurable assumptions about customer acquisition, pricing, and retention. In Year 1, we focus on manual sales and product refinement, acquiring 2 customers per month at an average ARPA of $1,000. Year 2 sees sales team expansion to 2 full-time reps, increasing acquisition to 7 customers per month with ARPA growing to $1,200.</p>
+            <div class="key-points">
+                <div class="key-point">Customer acquisition ramps from 2/month (Year 1) to 15/month (Year 3)</div>
+                <div class="key-point">ARPA increases through upsells and enterprise mix shift: $1K → $1.4K</div>
+                <div class="key-point">Customer retention improves from 95% to 96% monthly through better CS</div>
+                <div class="key-point">Annual contracts with upfront payment improve cash flow dynamics</div>
+                <div class="key-point">Sales efficiency improves: CAC decreases from $4K to $3.2K</div>
+                <div class="key-point">Win rate improves from 20% to 30% as brand awareness grows</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/data_analytics.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 22 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Cost Structure</p>
+            <p class="body-text">ChurnGuard AI's cost structure is designed to achieve significant operating leverage as the business scales. The largest cost category is personnel, representing 60-70% of total expenses, with engineering and sales teams driving growth. Cloud infrastructure costs scale with customer volume but benefit from economies of scale, maintaining gross margins above 85%.</p>
+            <div class="key-points">
+                <div class="key-point">Fixed-cost platform enables strong operating leverage as revenue scales</div>
+                <div class="key-point">Year 1 Expenses: $600K (Personnel 65%, Infrastructure 12%, S&M 15%)</div>
+                <div class="key-point">Year 2 Expenses: $1.35M (Personnel 67%, Infrastructure 10%, S&M 15%)</div>
+                <div class="key-point">Year 3 Expenses: $3.05M (Personnel 66%, Infrastructure 9%, S&M 17%)</div>
+                <div class="key-point">Revenue per Employee: Improves from $10K (Y1) to $14K (Y3)</div>
+                <div class="key-point">S&M as % of Revenue: Decreases from 84% (Y1) to 21% (Y3)</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/success_metrics.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 23 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Cash Flow Projections</p>
+            <p class="body-text">Cash flow management is critical for early-stage SaaS companies, and our projections demonstrate a clear path to cash flow positivity. Year 1 shows negative cash flow of $350,000 as we invest in product development and initial customer acquisition. Year 2 cash flow improves to -$150,000 as revenue ramps while maintaining disciplined expense growth.</p>
+            <div class="key-points">
+                <div class="key-point">Positive cash flow achieved by Month 30 with $850K cumulative funding requirement</div>
+                <div class="key-point">Year 1: -$350K operating cash flow, ending with $150K cash balance</div>
+                <div class="key-point">Year 2: -$150K operating cash flow, ending with $1.2M cash balance</div>
+                <div class="key-point">Year 3: +$450K operating cash flow, ending with $5.15M cash balance</div>
+                <div class="key-point">Annual contracts with upfront payment significantly improve cash dynamics</div>
+                <div class="key-point">Series A Timing: Optimal at Month 15-18 with $2-3M raise</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/cash_flow.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 24 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Financial Plan</h1>
+            <p class="slide-subtitle">Balance Sheet Projections</p>
+            <p class="body-text">Our projected balance sheet demonstrates financial stability and efficient capital deployment. Total assets grow from $520,000 in Year 1 to $5.6M in Year 3, primarily driven by cash accumulation and accounts receivable from annual contracts. We maintain minimal debt, relying on equity financing for growth capital.</p>
+            <div class="key-points">
+                <div class="key-point">Strong balance sheet with minimal debt and growing cash reserves</div>
+                <div class="key-point">Year 1: $520K total assets, $420K equity, $100K liabilities</div>
+                <div class="key-point">Year 2: $1.63M total assets, $1.25M equity, $380K liabilities</div>
+                <div class="key-point">Year 3: $5.75M total assets, $4.8M equity, $950K liabilities</div>
+                <div class="key-point">Deferred Revenue: Grows from $50K (Y1) to $700K (Y3) indicating future revenue</div>
+                <div class="key-point">Current Ratio: Improves from 1.8 (Y1) to 5.8 (Y3), demonstrating strong liquidity</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/balance_sheet.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 5</div>
+            <div class="footer-right">Slide 25 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Success Metrics</h1>
+            <p class="slide-subtitle">Customer KPIs</p>
+            <p class="body-text">We will monitor a comprehensive set of customer-focused KPIs to ensure product-market fit and sustainable growth. Customer churn rate is our north star metric, as our product's value proposition is directly tied to helping customers reduce their own churn. We target maintaining monthly churn below 5% through proactive customer success management.</p>
+            <div class="key-points">
+                <div class="key-point">Monthly Customer Churn Rate: Target <5% (north star metric)</div>
+                <div class="key-point">Annual Customer Retention: Target >60% demonstrating product stickiness</div>
+                <div class="key-point">Net Revenue Retention (NRR): Target >110% showing expansion revenue</div>
+                <div class="key-point">Gross Revenue Retention: Target >90% indicating strong retention</div>
+                <div class="key-point">Customer Health Score: 0-100 scale with 70% in green zone</div>
+                <div class="key-point">NPS Score: Target >50 indicating strong customer satisfaction</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/customer_retention.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 26 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Success Metrics</h1>
+            <p class="slide-subtitle">Financial KPIs</p>
+            <p class="body-text">Financial KPIs provide critical insights into business model viability and growth sustainability. We track both top-line growth metrics and bottom-line efficiency indicators to ensure balanced, profitable scaling. Monthly Recurring Revenue (MRR) and Annual Recurring Revenue (ARR) measure our revenue base and growth trajectory.</p>
+            <div class="key-points">
+                <div class="key-point">Monthly Recurring Revenue (MRR): Primary growth indicator tracking monthly progress</div>
+                <div class="key-point">Annual Recurring Revenue (ARR): Yearly benchmark with target >100% YoY growth</div>
+                <div class="key-point">Customer Acquisition Cost (CAC): Target <$3,600 with decreasing trend</div>
+                <div class="key-point">Customer Lifetime Value (LTV): Target >$40,000 with improving trend</div>
+                <div class="key-point">LTV:CAC Ratio: Target >5:1 ensuring profitable customer acquisition</div>
+                <div class="key-point">Gross Margin: Target >85% demonstrating platform scalability</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/chart_cac_retention.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 27 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Success Metrics</h1>
+            <p class="slide-subtitle">Operational KPIs</p>
+            <p class="body-text">Product and operational KPIs ensure we deliver a reliable, high-performing platform that meets customer expectations. Platform uptime of 99.9% is non-negotiable for enterprise customers who rely on our predictions for business-critical decisions. Model accuracy and prediction quality directly impact customer ROI and satisfaction.</p>
+            <div class="key-points">
+                <div class="key-point">System Uptime: Target 99.9% for enterprise-grade reliability</div>
+                <div class="key-point">API Response Time: <200ms (p95) ensuring fast predictions</div>
+                <div class="key-point">Model Prediction Accuracy: >85% with <15% false positive rate</div>
+                <div class="key-point">Support Ticket Resolution: <24 hours with >4.5/5 satisfaction</div>
+                <div class="key-point">Revenue per Employee: Target $140K+ by Year 3 showing efficiency</div>
+                <div class="key-point">Feature Release Frequency: Bi-weekly cadence for continuous improvement</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/success_metrics.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 28 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Implementation Roadmap</h1>
+            <p class="slide-subtitle">Phase 1 (Months 1-6)</p>
+            <p class="body-text">The first six months establish the foundation for ChurnGuard AI's success. Our primary focus is building a minimum viable product (MVP) with core churn prediction capabilities, integrating with major CRM platforms, and validating product-market fit with 5-10 design partner customers. The engineering team develops the data ingestion pipeline, trains initial machine learning models, and builds the customer-facing dashboard.</p>
+            <div class="key-points">
+                <div class="key-point">Foundation Phase: Build MVP with core churn prediction and CRM integrations</div>
+                <div class="key-point">Product Development: Data ingestion pipeline, ML models, customer dashboard</div>
+                <div class="key-point">Customer Acquisition: 5-10 design partner customers for feedback and validation</div>
+                <div class="key-point">Team Building: Hire 2 full-stack engineers, 1 ML engineer, design contractor</div>
+                <div class="key-point">Marketing Foundation: Website, case study development, content strategy</div>
+                <div class="key-point">Milestone: MVP demo-ready by Month 3, 10 active customers by Month 6</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/implementation_roadmap.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 29 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Implementation Roadmap</h1>
+            <p class="slide-subtitle">Phase 2 (Months 7-12)</p>
+            <p class="body-text">Phase 2 transitions from product validation to growth acceleration. With product-market fit confirmed, we expand the sales team, invest in marketing automation, and scale customer acquisition to 2-3 new customers per month. Product development focuses on advanced features requested by early customers, including custom model training, advanced segmentation, and automated intervention workflows.</p>
+            <div class="key-points">
+                <div class="key-point">Growth Phase: Scale customer acquisition to 2-3 new customers per month</div>
+                <div class="key-point">Product Enhancement: Advanced segmentation, custom models, automation workflows</div>
+                <div class="key-point">Sales Expansion: Hire inside sales rep and marketing manager</div>
+                <div class="key-point">Customer Success: Onboarding automation, health scoring, QBRs</div>
+                <div class="key-point">Partnerships: Salesforce AppExchange listing, HubSpot partner program</div>
+                <div class="key-point">Milestone: 25 customers and $250K ARR by Month 12, Series A preparation</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/team_collaboration.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 30 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Implementation Roadmap</h1>
+            <p class="slide-subtitle">Phase 3 (Months 13-24)</p>
+            <p class="body-text">Phase 3 focuses on scaling all aspects of the business to achieve $1.2M ARR by month 24. Sales team expansion to 4 reps enables higher customer acquisition velocity, targeting 7 new customers per month. Product development emphasizes enterprise features, industry-specific models, and international expansion capabilities. We raise a Series A round ($2-3M) around month 18 to fuel accelerated growth.</p>
+            <div class="key-points">
+                <div class="key-point">Scale Phase: Drive revenue growth to $1.2M ARR with 100 customers</div>
+                <div class="key-point">Team Expansion: 4 sales reps, 2 marketing managers, 3 customer success managers</div>
+                <div class="key-point">Product Maturity: Industry-specific models, integration marketplace, white-label</div>
+                <div class="key-point">Series A Fundraising: $2-3M raise at Month 15-18 to fuel acceleration</div>
+                <div class="key-point">Market Expansion: Geographic entry to EU, vertical specialization</div>
+                <div class="key-point">Milestone: 100 customers and $1.2M ARR by Month 24</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/data_analytics.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 31 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Implementation Roadmap</h1>
+            <p class="slide-subtitle">Phase 4 (Months 25-36)</p>
+            <p class="body-text">Phase 4 represents the transition to a mature, profitable business. We achieve our goal of $3.5M ARR with 250 customers and positive EBITDA by month 36. Product development focuses on AI innovation, expanding our competitive moat through proprietary algorithms and unique data insights. International expansion accelerates with dedicated teams in Europe and Asia Pacific.</p>
+            <div class="key-points">
+                <div class="key-point">Maturity Phase: Achieve profitability with $3.5M ARR and 250 customers</div>
+                <div class="key-point">Product Innovation: Next-generation AI models, prescriptive analytics</div>
+                <div class="key-point">Market Leadership: Thought leadership, industry awards, analyst coverage</div>
+                <div class="key-point">International Expansion: 30% of new customers from Europe, APAC entry</div>
+                <div class="key-point">Strategic Options: Series B funding, strategic partnerships, or acquisition interest</div>
+                <div class="key-point">Milestone: Break-even by Month 30, 250 customers and market leadership by Month 36</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/financial_growth.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 32 / 33</div>
+        </div>`,
+            `<div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Conclusion</h1>
+            <p class="slide-subtitle">Next Steps</p>
+            <p class="body-text">ChurnGuard AI addresses a critical business challenge—customer retention—with a proven, AI-powered solution that delivers measurable ROI. Our comprehensive business plan demonstrates strong market opportunity, differentiated product capabilities, and a clear path to profitability. With $7.08 billion market potential growing at 17.2% annually, multiple high-churn target industries, and compelling unit economics, we are well-positioned for success.</p>
+            <div class="key-points">
+                <div class="key-point">Market Opportunity: $7.08B market growing at 17.2% CAGR with clear pain points</div>
+                <div class="key-point">Competitive Advantage: Superior AI accuracy, enterprise reliability, seamless integration</div>
+                <div class="key-point">Financial Attractiveness: 85% gross margins, 12:1 LTV:CAC, path to profitability</div>
+                <div class="key-point">Team & Execution: Experienced founding team with clear go-to-market strategy</div>
+                <div class="key-point">Investment Highlights: Multiple high-churn industries, proven ROI, scalable model</div>
+                <div class="key-point">Next Steps: Schedule due diligence meeting, review financial model, meet customers</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../images/hero_ai_technology.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 33 / 33</div>
+        </div>`,
+        ];
+        
+        function initSlides() {
+            const container = document.getElementById('slideContent');
+            const thumbnails = document.getElementById('thumbnails');
+            
+            slidesHTML.forEach((html, index) => {
+                // Create slide wrapper
+                const wrapper = document.createElement('div');
+                wrapper.className = 'slide-wrapper';
+                if (index === 0) wrapper.classList.add('active');
+                wrapper.innerHTML = html;
+                container.appendChild(wrapper);
+                
+                // Create thumbnail
                 const thumb = document.createElement('div');
-                thumb.className = 'thumbnail' + (i === 0 ? ' active' : '');
-                thumb.textContent = i + 1;
-                thumb.onclick = () => goToSlide(i);
-                container.appendChild(thumb);
-            }
-        }
-
-        // Show slide
-        function showSlide(index) {
-            if (index < 0 || index >= slidesData.length) return;
-            
-            currentSlideIndex = index;
-            const slide = slidesData[index];
-            
-            if (slide && slide.content) {
-                document.getElementById('slideContent').innerHTML = slide.content;
-            }
-            
-            document.getElementById('currentSlide').textContent = index + 1;
-            document.getElementById('slideJump').value = index + 1;
-            
-            const progress = ((index + 1) / slidesData.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
+                thumb.className = 'thumbnail';
+                if (index === 0) thumb.classList.add('active');
+                thumb.textContent = index + 1;
+                thumb.onclick = () => goToSlide(index);
+                thumbnails.appendChild(thumb);
             });
-
-            zoomLevel = 1;
-            updateZoom();
+            
+            showSlide(0);
         }
-
-        // Navigation
+        
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide-wrapper');
+            const thumbs = document.querySelectorAll('.thumbnail');
+            
+            if (n >= slides.length) n = slides.length - 1;
+            if (n < 0) n = 0;
+            
+            slides.forEach(s => s.classList.remove('active'));
+            thumbs.forEach(t => t.classList.remove('active'));
+            
+            slides[n].classList.add('active');
+            thumbs[n].classList.add('active');
+            
+            document.getElementById('current').textContent = n + 1;
+            document.getElementById('progress').style.width = ((n + 1) / 33 * 100) + '%';
+            document.getElementById('jumpInput').value = n + 1;
+            
+            currentSlide = n;
+        }
+        
         function nextSlide() {
-            if (currentSlideIndex < slidesData.length - 1) {
-                showSlide(currentSlideIndex + 1);
-            }
+            showSlide(currentSlide + 1);
         }
-
+        
         function previousSlide() {
-            if (currentSlideIndex > 0) {
-                showSlide(currentSlideIndex - 1);
+            showSlide(currentSlide - 1);
+        }
+        
+        function goToSlide(n) {
+            showSlide(n);
+        }
+        
+        function jumpToSlide() {
+            const n = parseInt(document.getElementById('jumpInput').value) - 1;
+            showSlide(n);
+        }
+        
+        function zoomIn() {
+            zoomLevel = Math.min(200, zoomLevel + 10);
+            document.querySelector('.slide-container').style.transform = `scale(${zoomLevel / 100})`;
+        }
+        
+        function zoomOut() {
+            zoomLevel = Math.max(50, zoomLevel - 10);
+            document.querySelector('.slide-container').style.transform = `scale(${zoomLevel / 100})`;
+        }
+        
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
             }
         }
-
-        function goToSlide(index) {
-            showSlide(index);
+        
+        function showHelp() {
+            document.getElementById('helpPanel').classList.add('active');
+            document.getElementById('helpOverlay').classList.add('active');
         }
-
-        // Zoom
-        function zoomIn() {
-            zoomLevel = Math.min(zoomLevel + 0.1, 2);
-            updateZoom();
+        
+        function hideHelp() {
+            document.getElementById('helpPanel').classList.remove('active');
+            document.getElementById('helpOverlay').classList.remove('active');
         }
-
-        function zoomOut() {
-            zoomLevel = Math.max(zoomLevel - 0.1, 0.5);
-            updateZoom();
-        }
-
-        function updateZoom() {
-            const slideContent = document.getElementById('slideContent');
-            slideContent.style.transform = `scale(${zoomLevel})`;
-            slideContent.style.transformOrigin = 'center';
-        }
-
-        // Fullscreen
-        function toggleFullscreen() {
-            const container = document.getElementById('presentationContainer');
-            container.classList.toggle('fullscreen');
-        }
-
-        // Keyboard shortcuts
-        function setupKeyboardShortcuts() {
-            document.addEventListener('keydown', (e) => {
-                switch(e.key) {
-                    case 'ArrowRight':
-                    case ' ':
-                        nextSlide();
-                        e.preventDefault();
-                        break;
-                    case 'ArrowLeft':
-                        previousSlide();
-                        e.preventDefault();
-                        break;
-                    case 'Home':
-                        goToSlide(0);
-                        e.preventDefault();
-                        break;
-                    case 'End':
-                        goToSlide(slidesData.length - 1);
-                        e.preventDefault();
-                        break;
-                    case 'f':
-                    case 'F':
-                        toggleFullscreen();
-                        e.preventDefault();
-                        break;
-                    case '+':
-                    case '=':
-                        zoomIn();
-                        e.preventDefault();
-                        break;
-                    case '-':
-                    case '_':
-                        zoomOut();
-                        e.preventDefault();
-                        break;
-                    case '?':
-                        toggleKeyboardHelp();
-                        e.preventDefault();
-                        break;
-                }
-            });
-        }
-
-        // Copy and print protection
-        function setupCopyProtection() {
-            // Disable right-click
-            document.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable text selection
-            document.addEventListener('selectstart', (e) => {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable copy
-            document.addEventListener('copy', (e) => {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable cut
-            document.addEventListener('cut', (e) => {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable print
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-
-            // Disable drag
-            document.addEventListener('dragstart', (e) => {
-                e.preventDefault();
-                return false;
-            });
-        }
-
-        // Toggle keyboard help
-        function toggleKeyboardHelp() {
-            const help = document.getElementById('keyboardHelp');
-            help.classList.toggle('show');
-        }
-
-        // Start loading slides
-        window.addEventListener('load', initializeSlides);
+        
+        // Keyboard controls
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); previousSlide(); }
+            if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+            if (e.key === 'End') { e.preventDefault(); showSlide(32); }
+            if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
+            if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomIn(); }
+            if (e.key === '-') { e.preventDefault(); zoomOut(); }
+            if (e.key === '?') { e.preventDefault(); showHelp(); }
+        });
+        
+        // Initialize on load
+        window.addEventListener('load', initSlides);
     </script>
 </body>
 </html>
