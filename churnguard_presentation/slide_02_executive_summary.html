@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary - Market Opportunity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 60px; /* keep title top padding consistent */
+            padding-left: 60px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        .accent-bar { position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: #FF6B35; }
+        .content-section { display: flex; flex-direction: column; justify-content: flex-start; }
+        .slide-title { font-size: 36px; font-weight: 800; color: #0066CC; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .slide-subtitle { font-size: 16px; font-weight: 600; color: #FF6B35; margin-bottom: 24px; letter-spacing: -0.2px; }
+        .key-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .metric-box { background: #F5F5F5; padding: 14px; border-left: 4px solid #FF6B35; }
+        .metric-value { font-size: 24px; font-weight: 700; color: #0066CC; margin-bottom: 8px; }
+        .metric-label { font-size: 13px; color: #666666; line-height: 1.4; font-weight: 500; }
+        .body-text { font-size: 15px; color: #333333; line-height: 1.5; margin-bottom: 12px; }
+        .key-points { margin-top: 10px; }
+        .key-point { font-size: 14px; color: #333333; line-height: 1.45; margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .key-point:before { content: "•"; position: absolute; left: 0; color: #FF6B35; font-weight: 700; font-size: 18px; }
+        .image-section { display: flex; align-items: center; justify-content: center; background: #F5F5F5; min-height: 500px; position: relative; }
+        .image-section img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 20px; box-sizing: border-box; }
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: #999999; font-weight: 500; }
+        .slide-info-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            font-size: 11px;
+            color: #999999;
+            padding-top: 10px;
+            border-top: 1px solid #EEEEEE;
+        }
+        .footer-left { text-align: left; }
+        .footer-center {
+            background: #FF6B35;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-right { text-align: right; }
+        .slide-number { display: none; }
+        .student-footer { display: none; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Executive Summary</h1>
+            <p class="slide-subtitle">Market Opportunity</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">$7.08B</div>
+                    <div class="metric-label">Market Size by 2033</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">17.2%</div>
+                    <div class="metric-label">Annual CAGR</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">5-25x</div>
+                    <div class="metric-label">Retention vs Acquisition Cost</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">25-95%</div>
+                    <div class="metric-label">Profit Increase (5% Retention)</div>
+                </div>
+            </div>
+            <p class="body-text">ChurnGuard AI addresses a critical business challenge—customer retention—with a proven, AI-powered solution that delivers measurable ROI. The global churn prediction software market has reached USD 1.78 billion in 2024 and is projected to grow to USD 7.08 billion by 2033, representing a robust CAGR of 17.2%.</p>
+            <div class="key-points">
+                <div class="key-point">Market opportunity driven by fundamental economics: acquiring new customers costs 5-25 times more than retaining existing ones</div>
+                <div class="key-point">Just a 5% improvement in retention rates can increase profits by 25-95%, creating massive ROI potential</div>
+                <div class="key-point">ChurnGuard AI enables proactive retention strategies through advanced ML prediction with 85%+ accuracy</div>
+                <div class="key-point">Multiple high-churn industries represent $4+ billion addressable market opportunity</div>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="/home/ubuntu/images/market_growth.png" alt="Market Growth Visualization">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center"></div>
+            <div class="footer-right">Slide 3 / 33</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetization Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 60px;
+            padding-left: 60px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        .accent-bar { position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: #FF6B35; }
+        .content-section { display: flex; flex-direction: column; justify-content: flex-start; }
+        .slide-title { font-size: 36px; font-weight: 800; color: #0066CC; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .slide-subtitle { font-size: 16px; font-weight: 600; color: #FF6B35; margin-bottom: 20px; letter-spacing: -0.2px; }
+        .body-text { font-size: 15px; color: #333333; line-height: 1.5; margin-bottom: 12px; }
+        .key-points { margin-top: 10px; }
+        .key-point { font-size: 13px; color: #333333; line-height: 1.45; margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .key-point:before { content: "•"; position: absolute; left: 0; color: #FF6B35; font-weight: 700; font-size: 16px; }
+        .image-section { display: flex; align-items: center; justify-content: center; background: #F5F5F5; min-height: 500px; position: relative; }
+        .image-section img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 20px; box-sizing: border-box; }
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: #999999; font-weight: 500; }
+        .slide-info-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            font-size: 11px;
+            color: #999999;
+            padding-top: 10px;
+            border-top: 1px solid #EEEEEE;
+        }
+        .footer-left { text-align: left; }
+        .footer-center {
+            background: #FF6B35;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-right { text-align: right; }
+        .slide-number { display: none; }
+        .student-footer { display: none; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Pricing Model</p>
+            <p class="body-text">ChurnGuard AI employs a value-based pricing strategy with three core tiers designed to serve businesses of all sizes. The Starter plan at $499/month targets SMEs with up to 10,000 customers, providing essential churn prediction capabilities and basic integrations. The Professional plan at $1,499/month serves mid-market companies with up to 50,000 customers, adding advanced analytics, API access, and multiple predictive models.</p>
+            <div class="key-points">
+                <div class="key-point">Tiered SaaS pricing captures value across SME, mid-market, and enterprise segments</div>
+                <div class="key-point">Starter Plan: $499/month for SMEs with up to 10,000 customers</div>
+                <div class="key-point">Professional Plan: $1,499/month for mid-market with up to 50,000 customers</div>
+                <div class="key-point">Enterprise Plan: Custom pricing based on volume and requirements</div>
+                <div class="key-point">Additional Revenue: API services ($0.01 per prediction), professional services</div>
+                <div class="key-point">Annual contracts with 15% discount encourage longer commitments</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="/home/ubuntu/images/chart_pricing_tiers.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 15 / 33</div>
+        </div>
+    </div>
+</body>
+</html>

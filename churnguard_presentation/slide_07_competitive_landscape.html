@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 60px;
+            padding-left: 60px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        .accent-bar { position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: #FF6B35; }
+        .content-section { display: flex; flex-direction: column; justify-content: flex-start; }
+        .slide-title { font-size: 36px; font-weight: 800; color: #0066CC; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .slide-subtitle { font-size: 16px; font-weight: 600; color: #FF6B35; margin-bottom: 24px; letter-spacing: -0.2px; }
+        .key-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .metric-box { background: #F5F5F5; padding: 14px; border-left: 4px solid #FF6B35; }
+        .metric-value { font-size: 24px; font-weight: 700; color: #0066CC; margin-bottom: 8px; }
+        .metric-label { font-size: 13px; color: #666666; line-height: 1.4; font-weight: 500; }
+        .body-text { font-size: 15px; color: #333333; line-height: 1.5; margin-bottom: 12px; }
+        .key-points { margin-top: 10px; }
+        .key-point { font-size: 14px; color: #333333; line-height: 1.45; margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .key-point:before { content: "•"; position: absolute; left: 0; color: #FF6B35; font-weight: 700; font-size: 18px; }
+        .image-section { display: flex; align-items: center; justify-content: center; background: #F5F5F5; min-height: 500px; position: relative; }
+        .image-section img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 20px; box-sizing: border-box; }
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: #999999; font-weight: 500; }
+        .slide-info-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            font-size: 11px;
+            color: #999999;
+            padding-top: 10px;
+            border-top: 1px solid #EEEEEE;
+        }
+        .footer-left { text-align: left; }
+        .footer-center {
+            background: #FF6B35;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-right { text-align: right; }
+        .slide-number { display: none; }
+        .student-footer { display: none; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Market Analysis</h1>
+            <p class="slide-subtitle">Competitive Landscape</p>
+            <div class="key-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">Enterprise</div>
+                    <div class="metric-label">Tier</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">AI-First</div>
+                    <div class="metric-label">Tier</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">Mid-Market</div>
+                    <div class="metric-label">Gap</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">ChurnGuard</div>
+                    <div class="metric-label">Opportunity</div>
+                </div>
+                
+            </div>
+            <p class="body-text">The churn prediction market consists of three distinct competitive tiers. Enterprise platforms like Gainsight and Salesforce dominate the high-end market but lack specialized AI capabilities. AI-powered challengers focus on predictive analytics but may lack enterprise features. The mid-market remains underserved, creating an opportunity for solutions combining AI sophistication with enterprise reliability.</p>
+            <div class="key-points">
+                <div class="key-point">Enterprise Tier: Gainsight, Salesforce, Zendesk (strong brand, weak AI)</div>
+                <div class="key-point">AI-First Tier: Pecan AI, Braze, ChurnZero (strong AI, weak enterprise)</div>
+                <div class="key-point">Mid-Market Gap: Underserved segment with clear opportunity</div>
+                <div class="key-point">ChurnGuard AI: Superior accuracy + enterprise-grade reliability</div>
+                <div class="key-point">Competitive advantages: Seamless integration, actionable insights</div>
+                <div class="key-point">Positioned for rapid market penetration</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="/home/ubuntu/images/competitive_landscape.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 1</div>
+            <div class="footer-right">Slide 8 / 33</div>
+        </div>
+    </div>
+</body>
+</html>

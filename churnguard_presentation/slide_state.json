@@ -1,0 +1,276 @@
+{
+  "project_info": {
+    "title": "ChurnGuard AI: Strategic Business Plan",
+    "created": 1763635398.6753957,
+    "last_updated": 1763636813.926534,
+    "total_slides": 33
+  },
+  "slides": {
+    "slide_01_title": "edited",
+    "slide_01b_rubric_coverage": "edited",
+    "slide_02_executive_summary": "edited",
+    "slide_03_problem": "edited",
+    "slide_04_solution": "edited",
+    "slide_05_market_size": "edited",
+    "slide_06_target_industries": "edited",
+    "slide_07_competitive_landscape": "edited",
+    "slide_08_use_case_telecom": "edited",
+    "slide_09_use_case_ecommerce": "edited",
+    "slide_10_use_case_saas": "edited",
+    "slide_11_impact_benefits": "edited",
+    "slide_12_impact_challenges": "edited",
+    "slide_13_impact_ethics": "edited",
+    "slide_14_monetization_pricing": "edited",
+    "slide_15_monetization_revenue": "edited",
+    "slide_16_monetization_gtm": "edited",
+    "slide_17_monetization_breakeven": "edited",
+    "slide_18_financial_funding": "edited",
+    "slide_19_financial_sources": "edited",
+    "slide_20_financial_projections": "edited",
+    "slide_21_financial_drivers": "edited",
+    "slide_22_financial_costs": "edited",
+    "slide_23_financial_cashflow": "edited",
+    "slide_24_financial_balance": "edited",
+    "slide_25_metrics_customer": "edited",
+    "slide_26_metrics_financial": "edited",
+    "slide_27_metrics_operational": "edited",
+    "slide_28_roadmap_phase1": "edited",
+    "slide_29_roadmap_phase2": "edited",
+    "slide_30_roadmap_phase3": "edited",
+    "slide_31_roadmap_phase4": "edited",
+    "slide_32_conclusion": "edited"
+  },
+  "outline": [
+    {
+      "id": "slide_01_title",
+      "title": "ChurnGuard AI: Strategic Business Plan",
+      "summary": "Title slide introducing the AI-powered customer churn prediction platform and capstone project details with student information.",
+      "image_plan": "/home/ubuntu/images/hero_ai_technology.png - Hero image showing AI/technology concept, suitable for a title slide about an AI-powered platform. Uses the presentation's color palette.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_01b_rubric_coverage",
+      "title": "Rubric Coverage - Assignment Framework",
+      "summary": "Comprehensive mapping of all five rubric criteria to specific sections of the business plan, demonstrating complete coverage of market analysis, use cases, impact assessment, monetization strategy, and financial planning requirements.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_02_executive_summary",
+      "title": "Executive Summary - Market Opportunity",
+      "summary": "Overview of the $7 billion market opportunity in churn prediction and the compelling business case for ChurnGuard AI.",
+      "image_plan": "/home/ubuntu/images/market_growth.png - Image showing upward arrows and growth, which visually represents the market opportunity and projected growth of the $7 billion market.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_03_problem",
+      "title": "The Problem - Rising Costs & High Churn",
+      "summary": "Analysis of customer acquisition costs rising 60-75% and persistent high churn rates across industries.",
+      "image_plan": "/home/ubuntu/images/problem_costs.png - Image showing an upward trend with a warning sign and cost symbols, visually representing the problem of rising costs and high churn rates.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_04_solution",
+      "title": "The Solution - ChurnGuard AI Platform",
+      "summary": "Introduction to ChurnGuard AI's advanced ML-powered platform with 85%+ prediction accuracy and actionable insights.",
+      "image_plan": "/home/ubuntu/images/ai_platform.png - Image showing a dashboard with data, charts, and an 'AI' block, which is perfect for illustrating the ChurnGuard AI platform and its core capabilities.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_05_market_size",
+      "title": "Market Analysis - Global Market Size",
+      "summary": "Detailed market sizing showing $7.08B market by 2033 with 17.2% CAGR across global regions.",
+      "image_plan": "/home/ubuntu/images/global_market.png - Global map with growth indicators, suitable for illustrating the global market size and regional growth rates.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_06_target_industries",
+      "title": "Market Analysis - Target Industries",
+      "summary": "Analysis of four high-churn industries (Telecom, Retail, BFSI, SaaS) representing $4+ billion opportunity.",
+      "image_plan": "/home/ubuntu/images/data_analytics.png - Chart-heavy image suitable for illustrating the industry comparison chart and market sizing data.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_07_competitive_landscape",
+      "title": "Market Analysis - Competitive Landscape",
+      "summary": "Competitive positioning showing ChurnGuard AI's differentiation vs enterprise platforms and AI-first competitors.",
+      "image_plan": "/home/ubuntu/images/competitive_landscape.png - Image showing a matrix/quadrant, suitable for illustrating the competitive positioning matrix.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_08_use_case_telecom",
+      "title": "Use Case 1 - Proactive Retention in Telecom",
+      "summary": "Real-world example of telecom provider reducing churn by 18% using ChurnGuard AI with $12M annual savings.",
+      "image_plan": "/home/ubuntu/images/telecom_use_case.png - Image showing communication towers and mobile devices, which is highly relevant to the telecommunications use case.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_09_use_case_ecommerce",
+      "title": "Use Case 2 - Personalized Marketing in E-commerce",
+      "summary": "E-commerce platform increasing customer LTV by 34% through AI-driven customer segmentation and targeting.",
+      "image_plan": "/home/ubuntu/images/ecommerce_use_case.png - Image showing an e-commerce shopping cart and product icons, directly relevant to the e-commerce use case and personalized marketing.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_10_use_case_saas",
+      "title": "Use Case 3 - Product Development in SaaS",
+      "summary": "SaaS company identifying feature gaps causing 40% of churn and reducing churn by 45% through data-driven roadmap.",
+      "image_plan": "/home/ubuntu/images/saas_use_case.png - Image showing a cloud-based interface and user connection, suitable for representing a SaaS platform and product development analysis.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_11_impact_benefits",
+      "title": "Impact Assessment - Quantifiable Benefits",
+      "summary": "Comprehensive analysis of 300-500% ROI through reduced churn, increased LTV, and operational efficiency gains.",
+      "image_plan": "/home/ubuntu/images/financial_growth.png - Image showing various financial charts and a dollar sign, representing the quantifiable financial benefits and ROI.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_12_impact_challenges",
+      "title": "Impact Assessment - Implementation Challenges",
+      "summary": "Key challenges including data quality, model interpretability, change management, and technical integration solutions.",
+      "image_plan": "/home/ubuntu/images/challenges.png - Image showing a person navigating a path over obstacles, symbolizing the challenges and the path to success in implementation.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_13_impact_ethics",
+      "title": "Impact Assessment - Ethical Considerations",
+      "summary": "Framework for data privacy, algorithmic fairness, and transparency in AI operations with compliance measures.",
+      "image_plan": "/home/ubuntu/images/ethics_compliance.png - Image showing a shield, gavel, and checkmarks, representing the ethical framework, data privacy, and legal compliance.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_14_monetization_pricing",
+      "title": "Monetization Strategy - Pricing Model",
+      "summary": "Tiered SaaS pricing (Starter $499, Professional $1,499, Enterprise custom) with additional revenue streams.",
+      "image_plan": "/home/ubuntu/images/pricing_strategy.png - Image showing currency symbols and a calculator/chart, suitable for illustrating the tiered subscription pricing model.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_15_monetization_revenue",
+      "title": "Monetization Strategy - Revenue Model",
+      "summary": "SaaS business model with 85% gross margins, 12:1 LTV:CAC ratio, and strong unit economics.",
+      "image_plan": "/home/ubuntu/images/cash_flow.png - Image showing money flow, bar charts, and a pie chart, representing the revenue model and unit economics.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_16_monetization_gtm",
+      "title": "Monetization Strategy - Sales & Go-to-Market",
+      "summary": "Multi-channel sales strategy combining digital marketing, inside sales, field sales, and strategic partnerships.",
+      "image_plan": "/home/ubuntu/images/sales_strategy.png - Image showing a funnel and growth charts, representing the multi-channel sales strategy and go-to-market approach.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_17_monetization_breakeven",
+      "title": "Monetization Strategy - Break-Even Analysis",
+      "summary": "Path to profitability within 30 months with detailed financial projections for Years 1-3.",
+      "image_plan": "/home/ubuntu/images/balance_sheet.png - Image showing a financial comparison chart, suitable for illustrating the break-even analysis of revenue vs. costs.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_18_financial_funding",
+      "title": "Financial Plan - Funding Requirements",
+      "summary": "Seeking $500K seed funding with detailed use of funds across product, sales, infrastructure, and operations.",
+      "image_plan": "/home/ubuntu/images/funding_investment.png - Image showing a hand holding a growing plant and stacks of money, representing the funding requirement and investment growth.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_19_financial_sources",
+      "title": "Financial Plan - Funding Sources",
+      "summary": "Diversified funding strategy targeting angel investors, venture capital, and strategic investors.",
+      "image_plan": "/home/ubuntu/images/customer_retention.png - Image showing a network of connected people, suitable for illustrating the diverse funding sources and investor network.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_20_financial_projections",
+      "title": "Financial Plan - Three-Year Projections",
+      "summary": "Detailed 3-year financial summary showing path from $250K ARR (Year 1) to $3.5M ARR (Year 3).",
+      "image_plan": "/home/ubuntu/images/success_metrics.png - Image showing a dashboard with multiple charts and gauges, suitable for illustrating the three-year financial projections and key metrics.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_21_financial_drivers",
+      "title": "Financial Plan - Revenue Drivers",
+      "summary": "Key assumptions driving revenue growth including customer acquisition, ARPA, retention, and pricing evolution.",
+      "image_plan": "/home/ubuntu/images/team_collaboration.png - Image showing a team collaborating around a growth arrow, representing the revenue drivers and the expanding sales team.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_22_financial_costs",
+      "title": "Financial Plan - Cost Structure",
+      "summary": "Detailed cost breakdown showing operating leverage as revenue scales from $600K to $3.05M expenses.",
+      "image_plan": "/home/ubuntu/images/implementation_roadmap.png - Image showing a winding path with milestones, suitable for illustrating the implementation roadmap and phased approach.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_23_financial_cashflow",
+      "title": "Financial Plan - Cash Flow Projections",
+      "summary": "Cash flow analysis showing path to positive cash flow by Month 30 with $850K cumulative funding requirement.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_24_financial_balance",
+      "title": "Financial Plan - Balance Sheet Projections",
+      "summary": "Projected balance sheet showing strong financial position with minimal debt and growing cash reserves.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_25_metrics_customer",
+      "title": "Success Metrics - Customer KPIs",
+      "summary": "Customer-focused metrics including churn rate, NRR, health scores, satisfaction, and engagement indicators.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_26_metrics_financial",
+      "title": "Success Metrics - Financial KPIs",
+      "summary": "Financial metrics tracking growth efficiency, unit economics, profitability, and cash flow health.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_27_metrics_operational",
+      "title": "Success Metrics - Operational KPIs",
+      "summary": "Product and operational metrics including platform reliability, model performance, and team productivity.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_28_roadmap_phase1",
+      "title": "Implementation Roadmap - Phase 1 (Months 1-6)",
+      "summary": "Foundation phase focusing on MVP development, initial customer validation, and go-to-market preparation.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_29_roadmap_phase2",
+      "title": "Implementation Roadmap - Phase 2 (Months 7-12)",
+      "summary": "Growth phase emphasizing customer acquisition scaling, product enhancement, and customer success formalization.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_30_roadmap_phase3",
+      "title": "Implementation Roadmap - Phase 3 (Months 13-24)",
+      "summary": "Scale phase driving revenue growth to $1.2M ARR, Series A fundraising, and market expansion.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_31_roadmap_phase4",
+      "title": "Implementation Roadmap - Phase 4 (Months 25-36)",
+      "summary": "Maturity phase achieving profitability, market leadership, international expansion, and strategic options.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_32_conclusion",
+      "title": "Conclusion and Next Steps",
+      "summary": "Summary of investment highlights, call-to-action for investors and customers, and contact information.",
+      "image_plan": "",
+      "slide_template_key": ""
+    }
+  ]
+}

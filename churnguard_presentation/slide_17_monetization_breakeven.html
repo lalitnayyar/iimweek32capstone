@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetization Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 60px;
+            padding-left: 60px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        .accent-bar { position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: #FF6B35; }
+        .content-section { display: flex; flex-direction: column; justify-content: flex-start; }
+        .slide-title { font-size: 36px; font-weight: 800; color: #0066CC; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .slide-subtitle { font-size: 16px; font-weight: 600; color: #FF6B35; margin-bottom: 20px; letter-spacing: -0.2px; }
+        .body-text { font-size: 15px; color: #333333; line-height: 1.5; margin-bottom: 12px; }
+        .key-points { margin-top: 10px; }
+        .key-point { font-size: 13px; color: #333333; line-height: 1.45; margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .key-point:before { content: "•"; position: absolute; left: 0; color: #FF6B35; font-weight: 700; font-size: 16px; }
+        .image-section { display: flex; align-items: center; justify-content: center; background: #F5F5F5; min-height: 500px; position: relative; }
+        .image-section img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 20px; box-sizing: border-box; }
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: #999999; font-weight: 500; }
+        .slide-info-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            font-size: 11px;
+            color: #999999;
+            padding-top: 10px;
+            border-top: 1px solid #EEEEEE;
+        }
+        .footer-left { text-align: left; }
+        .footer-center {
+            background: #FF6B35;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-right { text-align: right; }
+        .slide-number { display: none; }
+        .student-footer { display: none; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="accent-bar"></div>
+        <div class="content-section">
+            <h1 class="slide-title">Monetization Strategy</h1>
+            <p class="slide-subtitle">Break-Even Analysis</p>
+            <p class="body-text">Our financial model projects break-even within 30 months of operation, driven by the combination of strong unit economics, scalable technology infrastructure, and efficient customer acquisition. In Year 1, we focus on product-market fit and initial customer acquisition, targeting 25 customers generating $250,000 in ARR. Year 2 emphasizes scaling sales and marketing, reaching 100 customers and $1.2M in ARR.</p>
+            <div class="key-points">
+                <div class="key-point">Path to profitability within 30 months with strong cash flow generation thereafter</div>
+                <div class="key-point">Year 1: 25 customers, $250K ARR, -$350K EBITDA (product-market fit focus)</div>
+                <div class="key-point">Year 2: 100 customers, $1.2M ARR, -$150K EBITDA (scaling sales and marketing)</div>
+                <div class="key-point">Year 3: 250 customers, $3.5M ARR, +$450K EBITDA (profitability achieved)</div>
+                <div class="key-point">Break-Even Point: Month 30 with cumulative cash requirement of $850K</div>
+                <div class="key-point">Post-Break-Even: 100% YoY revenue growth with improving margins</div>
+                
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="/home/ubuntu/images/chart_breakeven.png" alt="Slide Image">
+        </div>
+        <div class="slide-info-footer">
+            <div class="footer-left">Lalit Nayyar | lalitnayyar@gmail.com | Capstone Assignment - Section A Week 32 | IIMK</div>
+            <div class="footer-center">Criterion 4</div>
+            <div class="footer-right">Slide 18 / 33</div>
+        </div>
+    </div>
+</body>
+</html>
