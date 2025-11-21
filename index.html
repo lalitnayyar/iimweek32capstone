@@ -14,36 +14,70 @@
         .sidebar { width: 140px; background: #1a1a1a; border-right: 1px solid #333; overflow-y: auto; padding: 10px; }
         .sidebar-title { color: #0066CC; font-size: 11px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
         .thumbnails { display: flex; flex-direction: column; gap: 8px; }
-        .thumb { width: 120px; height: 80px; background: #222; border: 2px solid #444; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; font-weight: bold; border-radius: 3px; transition: all 0.3s; }
-        .thumb:hover { border-color: #0066CC; }
-        .thumb.active { border-color: #FF6B35; color: #FF6B35; }
+        .thumb { width: 120px; height: 80px; background: #222; border: 2px solid #444; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; font-weight: bold; border-radius: 3px; transition: all 0.3s; position: relative; }
+        .thumb:hover { border-color: #0066CC; transform: scale(1.05); }
+        .thumb.active { border-color: #FF6B35; color: #FF6B35; box-shadow: 0 0 10px rgba(255, 107, 53, 0.5); }
         
         .main { flex: 1; display: flex; flex-direction: column; background: #000; }
-        .toolbar { background: #111; border-bottom: 1px solid #333; padding: 10px 15px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        button { background: #0066CC; color: white; border: none; padding: 8px 14px; border-radius: 3px; cursor: pointer; font-weight: bold; font-size: 12px; transition: background 0.3s; }
-        button:hover { background: #0052A3; }
-        button:active { background: #003D7A; }
-        .counter { color: #999; font-size: 12px; margin-left: 10px; }
+        .toolbar { background: #111; border-bottom: 1px solid #333; padding: 10px 15px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+        .toolbar-left { display: flex; gap: 10px; align-items: center; }
+        .toolbar-right { display: flex; gap: 10px; align-items: center; }
+        button { background: #0066CC; color: white; border: none; padding: 8px 14px; border-radius: 3px; cursor: pointer; font-weight: bold; font-size: 12px; transition: all 0.3s; }
+        button:hover { background: #0052A3; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3); }
+        button:active { background: #003D7A; transform: translateY(0); }
+        .counter { color: #999; font-size: 12px; }
         
-        .slide-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; background: #0a0a0a; overflow: hidden; }
-        .slide-wrapper { width: 100%; height: 100%; background: white; border-radius: 6px; box-shadow: 0 10px 50px rgba(0,0,0,0.7); overflow: auto; display: none; }
+        .progress-bar { width: 200px; height: 4px; background: #333; border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #0066CC, #FF6B35); width: 3%; transition: width 0.3s; }
+        
+        .slide-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; background: #0a0a0a; overflow: hidden; position: relative; }
+        .slide-wrapper { width: 100%; height: 100%; background: white; border-radius: 6px; box-shadow: 0 10px 50px rgba(0,0,0,0.7); overflow: auto; display: none; animation: slideIn 0.4s ease-out; }
         .slide-wrapper.active { display: block; }
         
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .zoom-controls { display: flex; gap: 5px; align-items: center; }
+        .zoom-level { color: #999; font-size: 11px; width: 35px; text-align: center; }
+        
+        .search-box { background: #222; border: 1px solid #444; padding: 6px 10px; border-radius: 3px; color: white; font-size: 12px; width: 150px; }
+        .search-box::placeholder { color: #666; }
+        .search-box:focus { outline: none; border-color: #0066CC; box-shadow: 0 0 5px rgba(0, 102, 204, 0.3); }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; animation: fadeIn 0.3s; }
         .modal.active { display: flex; }
-        .modal-content { background: white; padding: 30px; border-radius: 8px; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .modal-content { background: white; padding: 30px; border-radius: 8px; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-height: 80vh; overflow-y: auto; }
         .modal-content h2 { color: #0066CC; margin-bottom: 15px; font-size: 24px; }
         .modal-content p { margin: 10px 0; color: #333; line-height: 1.6; }
         .modal-content button { margin-top: 20px; }
+        
+        .close-btn { position: absolute; top: 15px; right: 15px; background: #FF6B35; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; border: none; }
+        .close-btn:hover { background: #E55A24; }
+        
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #0066CC; color: white; padding: 12px 20px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); animation: slideUp 0.3s; z-index: 2000; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .slide-counter-input { background: #222; border: 1px solid #444; padding: 6px 8px; border-radius: 3px; color: white; font-size: 12px; width: 50px; text-align: center; }
+        .slide-counter-input:focus { outline: none; border-color: #0066CC; }
         
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #1a1a1a; }
         ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
         
-        /* Prevent text selection and copying */
         .slide-wrapper { -webkit-user-select: none; user-select: none; }
         .slide-wrapper * { -webkit-user-select: none; user-select: none; }
+        
+        .timer { color: #999; font-size: 12px; }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 80px; }
+            .thumb { width: 70px; height: 50px; font-size: 10px; }
+            .search-box { width: 100px; }
+            .progress-bar { width: 100px; }
+        }
     </style>
 </head>
 <body>
@@ -55,11 +89,28 @@
         
         <div class="main">
             <div class="toolbar">
-                <button onclick="previousSlide()" title="Previous slide (← or Backspace)">← Prev</button>
-                <button onclick="nextSlide()" title="Next slide (→ or Space)">Next →</button>
-                <span class="counter"><span id="current">1</span> / 33</span>
-                <button onclick="toggleFullscreen()" title="Toggle fullscreen (F)">Full</button>
-                <button onclick="showHelp()" title="Show keyboard shortcuts (?)">?</button>
+                <div class="toolbar-left">
+                    <button onclick="previousSlide()" title="Previous slide (← or Backspace)">← Prev</button>
+                    <button onclick="nextSlide()" title="Next slide (→ or Space)">Next →</button>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="counter">
+                        <input type="number" id="slideInput" class="slide-counter-input" min="1" max="33" value="1" onchange="jumpToSlide(parseInt(this.value) - 1)">
+                        / 33
+                    </span>
+                </div>
+                <div class="toolbar-right">
+                    <input type="text" class="search-box" id="searchBox" placeholder="Search slides..." onkeyup="searchSlides(this.value)">
+                    <div class="zoom-controls">
+                        <button onclick="zoomOut()" title="Zoom out">−</button>
+                        <span class="zoom-level" id="zoomLevel">100%</span>
+                        <button onclick="zoomIn()" title="Zoom in">+</button>
+                    </div>
+                    <button onclick="toggleFullscreen()" title="Toggle fullscreen (F)">⛶</button>
+                    <button onclick="downloadPDF()" title="Download as PDF">⬇ PDF</button>
+                    <button onclick="showHelp()" title="Show keyboard shortcuts (?)">?</button>
+                </div>
             </div>
             
             <div class="slide-area" id="slideArea"></div>
@@ -68,21 +119,32 @@
     
     <div class="modal" id="helpModal">
         <div class="modal-content">
-            <h2>Keyboard Shortcuts</h2>
-            <p><strong>→ or Space:</strong> Next slide</p>
-            <p><strong>← or Backspace:</strong> Previous slide</p>
-            <p><strong>Home:</strong> First slide</p>
-            <p><strong>End:</strong> Last slide</p>
-            <p><strong>F:</strong> Toggle fullscreen</p>
-            <p><strong>?:</strong> Show this help</p>
-            <p><strong>Click slide number:</strong> Jump to slide</p>
+            <button class="close-btn" onclick="closeHelp()">×</button>
+            <h2>Keyboard Shortcuts & Features</h2>
+            <p><strong>Navigation:</strong></p>
+            <p>→ or Space: Next | ← or Backspace: Previous | Home: First | End: Last</p>
+            <p><strong>Features:</strong></p>
+            <p>F: Fullscreen | +/−: Zoom | ?: Help | G: Go to slide</p>
+            <p><strong>Search:</strong> Use search box to find slides by content</p>
+            <p><strong>Direct Input:</strong> Enter slide number and press Enter to jump</p>
             <button onclick="closeHelp()">Close</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSearchModal()">×</button>
+            <h2>Search Results</h2>
+            <div id="searchResults"></div>
+            <button onclick="closeSearchModal()">Close</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 0;
         const totalSlides = 33;
+        let zoomLevel = 100;
+        let presentationStartTime = Date.now();
         
         // All slides with their styles
         const slidesData = [
@@ -3183,6 +3245,8 @@
             createThumbnails();
             showSlide(0);
             setupKeyboardShortcuts();
+            updateProgressBar();
+            startTimer();
         }
         
         function createThumbnails() {
@@ -3202,8 +3266,8 @@
             
             currentSlide = index;
             
-            // Update counter
-            document.getElementById('current').textContent = (index + 1);
+            // Update counter and input
+            document.getElementById('slideInput').value = (index + 1);
             
             // Update thumbnails
             document.querySelectorAll('.thumb').forEach((thumb, i) => {
@@ -3228,6 +3292,10 @@
             wrapper.appendChild(slideDiv);
             
             slideArea.appendChild(wrapper);
+            
+            // Apply zoom
+            applyZoom();
+            updateProgressBar();
         }
         
         function nextSlide() {
@@ -3238,14 +3306,97 @@
             showSlide(currentSlide - 1);
         }
         
+        function jumpToSlide(index) {
+            showSlide(index);
+        }
+        
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => {
-                    alert(`Error attempting to enable fullscreen: ${err.message}`);
+                    showToast('Fullscreen not available');
                 });
             } else {
                 document.exitFullscreen();
             }
+        }
+        
+        function zoomIn() {
+            if (zoomLevel < 150) {
+                zoomLevel += 10;
+                applyZoom();
+            }
+        }
+        
+        function zoomOut() {
+            if (zoomLevel > 70) {
+                zoomLevel -= 10;
+                applyZoom();
+            }
+        }
+        
+        function applyZoom() {
+            const slideWrapper = document.querySelector('.slide-wrapper');
+            if (slideWrapper) {
+                slideWrapper.style.transform = `scale(${zoomLevel / 100})`;
+                slideWrapper.style.transformOrigin = 'top center';
+            }
+            document.getElementById('zoomLevel').textContent = zoomLevel + '%';
+        }
+        
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function searchSlides(query) {
+            if (!query.trim()) return;
+            
+            const results = [];
+            query = query.toLowerCase();
+            
+            // Simple search through slide content
+            slidesData.forEach((slide, index) => {
+                if (slide.html.toLowerCase().includes(query)) {
+                    results.push({
+                        slide: index + 1,
+                        preview: slide.html.substring(0, 100).replace(/<[^>]*>/g, '')
+                    });
+                }
+            });
+            
+            if (results.length > 0) {
+                showSearchResults(results);
+            } else {
+                showToast('No slides found matching: ' + query);
+            }
+        }
+        
+        function showSearchResults(results) {
+            const modal = document.getElementById('searchModal');
+            const resultsDiv = document.getElementById('searchResults');
+            
+            resultsDiv.innerHTML = '';
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.style.padding = '10px';
+                div.style.borderBottom = '1px solid #eee';
+                div.style.cursor = 'pointer';
+                div.innerHTML = `<strong>Slide ${result.slide}:</strong> ${result.preview}...`;
+                div.onclick = () => {
+                    showSlide(result.slide - 1);
+                    closeSearchModal();
+                };
+                div.style.transition = 'background 0.3s';
+                div.onmouseover = () => div.style.background = '#f5f5f5';
+                div.onmouseout = () => div.style.background = 'white';
+                resultsDiv.appendChild(div);
+            });
+            
+            modal.classList.add('active');
+        }
+        
+        function closeSearchModal() {
+            document.getElementById('searchModal').classList.remove('active');
         }
         
         function showHelp() {
@@ -3254,6 +3405,27 @@
         
         function closeHelp() {
             document.getElementById('helpModal').classList.remove('active');
+        }
+        
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+        
+        function startTimer() {
+            setInterval(() => {
+                const elapsed = Math.floor((Date.now() - presentationStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                // Timer display can be added to toolbar if needed
+            }, 1000);
+        }
+        
+        function downloadPDF() {
+            showToast('PDF download feature - use browser print (Ctrl+P) and save as PDF');
         }
         
         function setupKeyboardShortcuts() {
@@ -3286,13 +3458,18 @@
                         e.preventDefault();
                         showHelp();
                         break;
+                    case 'g':
+                    case 'G':
+                        e.preventDefault();
+                        document.getElementById('slideInput').focus();
+                        break;
                 }
             });
             
-            // Close help modal on Escape
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeHelp();
+                    closeSearchModal();
                 }
             });
         }
